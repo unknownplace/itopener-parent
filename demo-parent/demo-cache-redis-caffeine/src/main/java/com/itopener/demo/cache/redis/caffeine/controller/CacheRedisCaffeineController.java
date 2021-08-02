@@ -42,4 +42,10 @@ public class CacheRedisCaffeineController {
 		cacheRedisCaffeineService.delete(id);
 		return ResultMap.buildSuccess();
 	}
+
+	@GetMapping("getByNull/{id}")
+	public ResultMap getByNull(@PathVariable long id) {
+		UserVO user = cacheRedisCaffeineService.getForNull(id);
+		return ResultMap.buildSuccess().put("user", user);
+	}
 }

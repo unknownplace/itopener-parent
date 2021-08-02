@@ -36,6 +36,12 @@ public class CacheRedisCaffeineService {
 		user.setCreateTime(TimestampUtil.current());
 		return user;
 	}
+
+	@Cacheable(key = "'cache_user_id_' + #id", value = "userIdCache", cacheManager = "cacheManager", sync = true)
+	public UserVO getForNull(long id) {
+		logger.info("get by name from db, but return null");
+		return null;
+	}
 	
 	@CachePut(key = "'cache_user_id_' + #userVO.id", value = "userIdCache", cacheManager = "cacheManager")
 	public UserVO update(UserVO userVO) {
