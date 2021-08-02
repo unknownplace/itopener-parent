@@ -112,6 +112,10 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 			this.evict(key);
             return;
         }
+		// 处理null场景
+		if (value == null) {
+			value = toStoreValue(null);
+		}
 		long expire = getExpire();
 		if(expire > 0) {
 			stringKeyRedisTemplate.opsForValue().set(getKey(key), toStoreValue(value), expire, TimeUnit.MILLISECONDS);
