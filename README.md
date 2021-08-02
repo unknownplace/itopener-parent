@@ -1,9 +1,11 @@
 # itopener-parent
 整理spring boot的一些封装和demo(转载)
-注：源项目核心结构转自：https://gitee.com/itopener/springboot
-由于原作者并未在项目中引用任何开源许可证明，故而商业使用请联系原作者。
-本转载继承GPL，本项目转载仅用于学习所用，目前维护也是仅为自己个人维护。
-后续计划：升级springboot 2.0等扩充
+
+## 注意
+源项目核心结构转自：https://gitee.com/itopener/springboot
+**由于原作者并未在项目中引用任何开源许可证明，故而商业使用请联系原作者。**
+本转载继承GPL（不提供闭源选择），本项目转载仅用于学习所用，目前维护也是仅为自己个人维护。
+后续计划：升级springboot 2.0，修复相关BUG等日常维护扩充
 
 ### 代码结构说明
 - **itopener-parent**：代码根目录，pom里统一定义所有module用到的jar包的版本（具体依赖哪些jar包由module自己定义，根pom只定义版本）
