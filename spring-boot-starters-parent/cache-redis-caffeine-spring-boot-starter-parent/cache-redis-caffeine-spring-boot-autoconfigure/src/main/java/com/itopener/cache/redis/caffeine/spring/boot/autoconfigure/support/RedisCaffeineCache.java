@@ -79,7 +79,6 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 				return (T) value;
 			}
 		}
-		
 		ReentrantLock lock = keyLockMap.get(key.toString());
 		if(lock == null) {
 			logger.debug("create lock for key : {}", key);
