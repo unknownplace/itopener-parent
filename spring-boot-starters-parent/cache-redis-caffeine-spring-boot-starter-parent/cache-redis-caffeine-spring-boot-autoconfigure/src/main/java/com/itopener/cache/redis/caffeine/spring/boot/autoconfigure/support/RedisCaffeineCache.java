@@ -10,6 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.support.AbstractValueAdaptingCache;
+import org.springframework.cache.support.NullValue;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.StringUtils;
 
@@ -72,7 +73,11 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 	public <T> T get(Object key, Callable<T> valueLoader) {
 		Object value = lookup(key);
 		if(value != null) {
-			return (T) value;
+			if (value instanceof NullValue) {
+				return null;
+			} else {
+				return (T) value;
+			}
 		}
 		
 		ReentrantLock lock = keyLockMap.get(key.toString());
@@ -85,7 +90,11 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 			lock.lock();
 			value = lookup(key);
 			if(value != null) {
-				return (T) value;
+				if (value instanceof NullValue) {
+					return null;
+				} else {
+					return (T) value;
+				}
 			}
 			value = valueLoader.call();
 			Object storeValue = toStoreValue(value);
