@@ -1,6 +1,10 @@
 # itopener-parent
 整理spring boot的一些封装和demo(转载)
 
+![](https://img.shields.io/badge/license-GPL-blueviolet.svg)
+
+
+
 ## 注意
 源项目核心结构转自：https://gitee.com/itopener/springboot
 
@@ -42,3 +46,7 @@
         - **tools-zookeeper-parent**：zookeeper查看工具，可以对zookeeper里的数据进行增删改查
         - **tools-zuul-ratelimiter-admin-parent**：Spring Cloud Zuul + RateLimiter网关限流的管理工具。可以通过页面对zuul限流配置进行增删改查操作，并刷新指定网关的限流配置
         - **tools-zuul-route-admin-parent**：zuul动态路由管理工具。配合zuul-route-spring-boot-starter-parent使用，可以动态配置路由规则，达到动态切流（分流）的效果
+
+# LICENSE
+Copyright © 2021-present nimbusking. This project is [GPL](https://github.com/nimbusking/itopener-parent) licensed.
+backbone project is copy from [itopener](https://gitee.com/itopener/springboot)
