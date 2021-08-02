@@ -42,6 +42,12 @@ public class CacheRedisCaffeineService {
 		logger.info("get by name from db, but return null");
 		return null;
 	}
+
+	@Cacheable(key = "'cache_user_id_' + #id", value = "userIdCache", cacheManager = "cacheManager")
+	public UserVO getForNullWithNoSync(long id) {
+		logger.info("get by name from db, but return null");
+		return null;
+	}
 	
 	@CachePut(key = "'cache_user_id_' + #userVO.id", value = "userIdCache", cacheManager = "cacheManager")
 	public UserVO update(UserVO userVO) {

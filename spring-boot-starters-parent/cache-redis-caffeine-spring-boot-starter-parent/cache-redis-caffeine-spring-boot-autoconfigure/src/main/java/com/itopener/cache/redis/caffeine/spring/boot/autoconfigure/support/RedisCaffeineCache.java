@@ -79,7 +79,6 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 				return (T) value;
 			}
 		}
-		
 		ReentrantLock lock = keyLockMap.get(key.toString());
 		if(lock == null) {
 			logger.debug("create lock for key : {}", key);
@@ -113,6 +112,10 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 			this.evict(key);
             return;
         }
+		// 处理null场景
+		if (value == null) {
+			value = toStoreValue(null);
+		}
 		long expire = getExpire();
 		if(expire > 0) {
 			stringKeyRedisTemplate.opsForValue().set(getKey(key), toStoreValue(value), expire, TimeUnit.MILLISECONDS);
