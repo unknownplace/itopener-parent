@@ -48,4 +48,10 @@ public class CacheRedisCaffeineController {
 		UserVO user = cacheRedisCaffeineService.getForNull(id);
 		return ResultMap.buildSuccess().put("user", user);
 	}
+
+	@GetMapping("getForNullWithNoSync/{id}")
+	public ResultMap getForNullWithNoSync(@PathVariable long id) {
+		UserVO user = cacheRedisCaffeineService.getForNullWithNoSync(id);
+		return ResultMap.buildSuccess().put("user", user);
+	}
 }
